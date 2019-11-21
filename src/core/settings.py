@@ -73,7 +73,16 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 
 # Channels
-ASGI_APPLICATION = 'mysite.routing.application'
+ASGI_APPLICATION = 'core.routing.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 
 # Database
